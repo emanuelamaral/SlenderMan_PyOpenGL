@@ -161,17 +161,12 @@ class Slender:
 
     def desenha_tronco(self):
         glPushMatrix()
-        # glTranslatef(-0.75 * self.grossura, 3.0 * self.grossura, 0.0)
-        # glScalef(5.5 * self.grossura, 6.0 * self.grossura, 1.25 * self.grossura)
 
-        # glutSolidCube(1.0)
         glColor3f(0.0, 0.0, 0.0)
         glScalef(2.0, 0.7, 1.2)
         glRotatef(90, 1.0, 0.0, 0.0)
         glTranslatef(0.0, 1.0, -14.0)
-        new_quadric = gluNewQuadric()
-
-        gluCylinder(new_quadric, 1.5, 1.5, 17, 40, 20)
+        gluCylinder(gluNewQuadric(), 1.5, 1.5, 17, 40, 20)
         glPopMatrix()
 
     def desenha_pernas(self):
@@ -188,7 +183,7 @@ class Slender:
         glPopMatrix()
 
         #glutSolidSphere(self.grossura/1.5, 32, 32)
-        glTranslatef(1.45, -3.5 * self.grossura, 1.1)
+        glTranslatef(-1.45, -3.5 * self.grossura, 1.1)
         glRotatef(self.curvatura_perna[0] * 0.9, 1.0, 0.0, 0.0)
         glRotatef(self.curvatura_z_perna[0] * 0.9, 0.0, 0.0, 1.0)
         glRotatef(180, 0.0, 0.0, 1.0)
@@ -207,7 +202,7 @@ class Slender:
         gluCylinder(gluNewQuadric(), 1.75, 0.85, 4, 20, 20)
         glPopMatrix()
 
-        glTranslatef(-1.45, -3.5 * self.grossura, 1.1)
+        glTranslatef(1.45, -3.5 * self.grossura, 1.1)
         glutSolidSphere(self.grossura / 1.5, 32, 32)
         glRotatef(self.curvatura_perna[1] * 0.9, 1.0, 0.0, 0.0)
         glRotatef(self.curvatura_z_perna[1] * 0.9, 0.0, 0.0, 1.0)
@@ -216,34 +211,36 @@ class Slender:
         glPopMatrix()
 
     def desenha_bracos(self):
-        # braco esquerdo
+        # braco direto
         glPushMatrix()
         glTranslatef(-2.75, 7.5 * self.grossura, 1.0)
-        # glutSolidSphere(self.grossura, 16, 16)
+        glutSolidSphere(0.75 * self.grossura, 16, 16)
         glRotatef(self.curvatura_braco[0] * 0.9, 1.0, 0.0, 0.0)
         glRotatef(self.curvatura_z_braco[0] * 0.9, 0.0, 0.0, 1.0)
-        glRotatef(135, 0.0, 0.0, 1.0)
-        #glRotatef(90, 0.0, 0.0, 1.0)
-        self.braco_esquerdo.desenha_braco()
-        # glRotatef(self.braco_esquerdo.c, 1.0, 0.0, 0.0)
+        glRotatef(180, 0.0, 0.0, 1.0)
+        glRotatef(180, 0.0, 1.0, 0.0)
+        self.braco_direito.desenha_braco()
         glPopMatrix()
 
-        # braco direito
+        # braco esquerdo
         glPushMatrix()
         glTranslatef(2.75, 7.5 * self.grossura, 1.0)
-        # glutSolidSphere(self.grossura, 16, 16)
+        glColor3f(0.0, 0.0, 0.0)
+        glutSolidSphere(0.75 * self.grossura, 16, 16)
         glRotatef(self.curvatura_braco[1] * 0.9, 1.0, 0.0, 0.0)
         glRotatef(self.curvatura_z_braco[1] * 0.9, 0.0, 0.0, 1.0)
-        glRotatef(220, 0.0, 0.0, 1.0)
+        glRotatef(180, 0.0, 0.0, 1.0)
         #glRotatef(270, 0.0, 0.0, 1.0)
-        self.braco_direito.desenha_braco()
+        self.braco_esquerdo.desenha_braco()
+
+
         glPopMatrix()
 
     def desenha_pescoco(self):
 
         glPushMatrix()
         glColor3f(0.0, 0.0, 0.0)
-        glTranslatef(0.0, 11.0, 1.25)
+        glTranslatef(0.0, 11.0, 1.0)
         glRotatef(90, 1.0, 0.0, 0.0)
         glScalef(1.5, 0.95, 0.85)
         gluCylinder(gluNewQuadric(), 0.75, 2.0, 1.38, 20, 20)
@@ -264,6 +261,121 @@ class Slender:
         glutSolidSphere(1.5, 16, 16)
         glPopMatrix()
 
+    def set_curvatura_tentaculos(self, tentaculo, curv):
+        self.curvatura_tentaculo[tentaculo] = curv
+
+        if tentaculo == 0:
+            self.tentaculo_cima_esquerdo.set_curvatura_tentaculo(curv)
+        elif tentaculo == 1:
+            self.tentaculo_meio_esquerdo.set_curvatura_tentaculo(curv)
+        elif tentaculo == 2:
+            self.tentaculo_meio_esquerdo_2.set_curvatura_tentaculo(curv)
+        elif tentaculo == 3:
+            self.tentaculo_baixo_esquerdo.set_curvatura_tentaculo(curv)
+        elif tentaculo == 4:
+            self.tentaculo_cima_direito.set_curvatura_tentaculo(curv)
+        elif tentaculo == 5:
+            self.tentaculo_meio_direito.set_curvatura_tentaculo(curv)
+        elif tentaculo == 6:
+            self.tentaculo_meio_direito_2.set_curvatura_tentaculo(curv)
+        elif tentaculo == 7:
+            self.tentaculo_baixo_direito.set_curvatura_tentaculo(curv)
+
+    def set_curvatura_tentaculos_2(self, tentaculo, curv):
+        self.curvatura_tentaculo[tentaculo] = curv
+
+    def set_curvatura_tentaculos_z(self, tentaculo, curv):
+        self.curvatura_z_tentaculo[tentaculo] = curv
+
+    def set_tentaculo_angulo_a(self, tentaculo, curv):
+        if tentaculo == 0:
+            self.tentaculo_cima_esquerdo.set_curvatura_tentaculo(curv)
+        elif tentaculo == 1:
+            self.tentaculo_meio_esquerdo.set_curvatura_tentaculo(curv)
+        elif tentaculo == 2:
+            self.tentaculo_meio_esquerdo_2.set_curvatura_tentaculo(curv)
+        elif tentaculo == 3:
+            self.tentaculo_baixo_esquerdo.set_curvatura_tentaculo(curv)
+        elif tentaculo == 4:
+            self.tentaculo_cima_direito.set_curvatura_tentaculo(curv)
+        elif tentaculo == 5:
+            self.tentaculo_meio_direito.set_curvatura_tentaculo(curv)
+        elif tentaculo == 6:
+            self.tentaculo_meio_direito_2.set_curvatura_tentaculo(curv)
+        elif tentaculo == 7:
+            self.tentaculo_baixo_direito.set_curvatura_tentaculo(curv)
+
+    def set_tentaculo_angulo_b(self, tentaculo, curv):
+        if tentaculo == 0:
+            self.tentaculo_cima_esquerdo.set_curvatura_tentaculo(curv)
+        elif tentaculo == 1:
+            self.tentaculo_meio_esquerdo.set_curvatura_tentaculo(curv)
+        elif tentaculo == 2:
+            self.tentaculo_meio_esquerdo_2.set_curvatura_tentaculo(curv)
+        elif tentaculo == 3:
+            self.tentaculo_baixo_esquerdo.set_curvatura_tentaculo(curv)
+        elif tentaculo == 4:
+            self.tentaculo_cima_direito.set_curvatura_tentaculo(curv)
+        elif tentaculo == 5:
+            self.tentaculo_meio_direito.set_curvatura_tentaculo(curv)
+        elif tentaculo == 6:
+            self.tentaculo_meio_direito_2.set_curvatura_tentaculo(curv)
+        elif tentaculo == 7:
+            self.tentaculo_baixo_direito.set_curvatura_tentaculo(curv)
+
+    def set_curvatura_bracos(self, braco, curv):
+        self.curvatura_braco[braco] = curv
+
+        if braco == 1:
+            self.braco_esquerdo.set_curvatura_braco(curv)
+        elif braco == 0:
+            self.braco_direito.set_curvatura_braco(curv)
+
+    def set_curvatura_bracos_2(self, braco, curv):
+        self.curvatura_braco[braco] = curv
+
+    def set_curvatura_bracos_z(self, braco, curv):
+        self.curvatura_z_braco[braco] = curv
+
+    def set_braco_angulo_a(self, braco, curv):
+        if braco == 1:
+            self.braco_esquerdo.curvatura_braco_conexao_a(curv)
+
+        elif braco == 0:
+            self.braco_direito.curvatura_braco_conexao_a(curv)
+
+    def set_braco_angulo_b(self, braco, curv):
+        if braco == 1:
+            self.braco_esquerdo.curvatura_braco_conexao_b(curv)
+        elif braco == 0:
+            self.braco_direito.curvatura_braco_conexao_b(curv)
+
+    def set_curvatura_penas(self, perna, curv):
+        self.curvatura_perna[perna] = curv
+
+        if perna == 0:
+            self.perna_esquerda.set_curvatura_perna(curv)
+        elif perna == 1:
+            self.perna_direita.set_curvatura_perna(curv)
+
+    def set_curvatura_pernas_2(self, perna, curv):
+        self.curvatura_perna[perna] = curv
+
+    def set_curvatura_pernas_z(self, perna, curv):
+        self.curvatura_z_perna[perna] = curv
+
+    def set_perna_angulo_a(self, perna, curv):
+        if perna == 0:
+            self.perna_direita.curvatura_perna_conexao_a(curv)
+        elif perna == 1:
+            self.perna_esquerda.curvatura_perna_conexao_a(curv)
+
+    def set_perna_angulo_b(self, perna, curv):
+        if perna == 0:
+            self.perna_esquerda.curvatura_perna_conexao_b(curv)
+        elif perna == 1:
+            self.perna_direita.curvatura_perna_conexao_b(curv)
+
     def desenha_slender(self):
         glPushMatrix()
         glTranslatef(0.0, 6.0 * self.grossura, 0.0)
@@ -278,53 +390,4 @@ class Slender:
 
         glPopMatrix()
 
-    def set_curvatura_tentaculos(self, tentaculo, curv):
-        self.curvatura_tentaculo[tentaculo] = curv
-
-        if tentaculo == 0:
-            self.tentaculo_cima_esquerdo.set_curvatura_tentaculo(curv)
-        elif tentaculo == 1:
-            self.tentaculo_meio_esquerdo.set_curvatura_tentaculo(curv)
-        elif tentaculo == 2:
-            self.tentaculo_baixo_esquerdo.set_curvatura_tentaculo(curv)
-        elif tentaculo == 3:
-            self.tentaculo_cima_direito.set_curvatura_tentaculo(curv)
-        elif tentaculo == 4:
-            self.tentaculo_meio_direito.set_curvatura_tentaculo(curv)
-        elif tentaculo == 5:
-            self.tentaculo_baixo_direito.set_curvatura_tentaculo(curv)
-
-    def set_curvatura_tentaculos_2(self, tentaculo, curv):
-        self.curvatura_tentaculo[tentaculo] = curv
-
-    def set_curvatura_tentaculos_z(self, tentaculo, curv):
-        self.curvatura_z_tentaculo[tentaculo] = curv
-
-    def set_tentaculo_angulo_a(self, tentaculo, curv):
-        if tentaculo == 0:
-            self.tentaculo_cima_esquerdo.curvatura_tentaculo_conexao_a(curv)
-        elif tentaculo == 1:
-            self.tentaculo_meio_esquerdo.curvatura_tentaculo_conexao_a(curv)
-        elif tentaculo == 2:
-            self.tentaculo_baixo_esquerdo.curvatura_tentaculo_conexao_a(curv)
-        elif tentaculo == 3:
-            self.tentaculo_cima_direito.curvatura_tentaculo_conexao_a(curv)
-        elif tentaculo == 4:
-            self.tentaculo_meio_direito.curvatura_tentaculo_conexao_a(curv)
-        elif tentaculo == 5:
-            self.tentaculo_baixo_direito.curvatura_tentaculo_conexao_a(curv)
-
-    def set_tentaculo_angulo_b(self, tentaculo, curv):
-        if tentaculo == 0:
-            self.tentaculo_cima_esquerdo.curvatura_tentaculo_conexao_b(curv)
-        elif tentaculo == 1:
-            self.tentaculo_meio_esquerdo.curvatura_tentaculo_conexao_b(curv)
-        elif tentaculo == 2:
-            self.tentaculo_baixo_esquerdo.curvatura_tentaculo_conexao_b(curv)
-        elif tentaculo == 3:
-            self.tentaculo_cima_direito.curvatura_tentaculo_conexao_b(curv)
-        elif tentaculo == 4:
-            self.tentaculo_meio_direito.curvatura_tentaculo_conexao_b(curv)
-        elif tentaculo == 5:
-            self.tentaculo_baixo_direito.curvatura_tentaculo_conexao_b(curv)
 

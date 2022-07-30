@@ -2,9 +2,9 @@ from Estrutura import *
 
 class Braco:
     def __init__(self, comprimento, largura):
-        self.a = Estrutura(comprimento * 0.40, largura)
-        self.b = Estrutura(comprimento * 0.45, largura)
-        self.c = Estrutura(comprimento * 0.35, largura)
+        self.a = Estrutura(comprimento * 0.85, largura)
+        self.b = Estrutura(comprimento * 0.85, largura)
+        self.c = Estrutura(comprimento * 0.04, largura)
 
         self.a.set_conexao(self.b, 0.0)
         self.b.set_conexao(self.c, 0.0)

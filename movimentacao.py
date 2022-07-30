@@ -1,19 +1,54 @@
-# as colunas indicam os tempos
-# as linhas indicam a curvatura
-# primeiro bloco de 3 linhas seria para o movimento do dedo 0
-# segundo bloco de 3 linhas seria para o movimento do dedo 1
-# e assim por diante
-movimento_tentaculo_1 = [
-                        [2, 5, 10, 15, 20, 15, 10, 0, -5, -10, -15, -20, -15, -10, -5, -2, 0],  # setCurvatura dedo[0]
-                        [0, 15, 30, 45, 60, 45, 30, 15, 0, 15, 30, 45, 60, 45, 30, 15, 0],  # setAnguloA dedo[0]
-                        [0, -15, -30, -15, 0, 15, 30, 15, 0, -15, -30, -15, 0, 15, 30, 15, 0]]  # setAnguloB dedo[0]
-
-# 11
-matriz_dedo_z = [[0, 15, 30, 45, 60, 75, 60, 45, 30, 15, 0]]
-
-matriz_dedo_anelar = [[0, 15, 30, 60, 90, 60, 30, 0, 0],
-                      [0, 0, 0, 0, 0, 0, 0, 0, 0],
-                      [0, 0, 0, 0, 0, 0, 0, 0, 0]]
+from constantes import *
 
 
-# movimentação da perna é somente a curvatura e angulo A
+def movimento_1_tentaculo(value, slender, tempo):
+
+    slender.set_curvatura_tentaculos_z(0, movimento_tentaculo_1[0][tempo])
+    slender.set_tentaculo_angulo_a(0, movimento_tentaculo_1[1][tempo])
+    slender.set_tentaculo_angulo_b(0, movimento_tentaculo_1[2][tempo])
+    # time.sleep(0.13)
+    # draw()
+
+    # for tempo in range(0, 17):
+    slender.set_curvatura_tentaculos_z(1, movimento_tentaculo_1[0][tempo])
+    slender.set_tentaculo_angulo_a(1, movimento_tentaculo_1[1][tempo])
+    slender.set_tentaculo_angulo_b(1, movimento_tentaculo_1[2][tempo])
+    # time.sleep(0.13)
+    # draw()
+
+    # for tempo in range(0, 17):
+    slender.set_curvatura_tentaculos_z(2, movimento_tentaculo_1[0][tempo])
+    slender.set_tentaculo_angulo_a(2, movimento_tentaculo_1[1][tempo])
+    slender.set_tentaculo_angulo_b(2, movimento_tentaculo_1[2][tempo])
+    # time.sleep(0.13)
+    # draw()
+
+    # for tempo in range(0, 17):
+    slender.set_curvatura_tentaculos_z(3, movimento_tentaculo_1[0][tempo])
+    slender.set_tentaculo_angulo_a(3, movimento_tentaculo_1[1][tempo])
+    slender.set_tentaculo_angulo_b(3, movimento_tentaculo_1[2][tempo])
+    # time.sleep(0.13)
+    # draw()
+
+    # for tempo in range(0, 17):
+    slender.set_curvatura_tentaculos_z(4, movimento_tentaculo_1[0][tempo])
+    slender.set_tentaculo_angulo_a(4, movimento_tentaculo_1[1][tempo])
+    slender.set_tentaculo_angulo_b(4, movimento_tentaculo_1[2][tempo])
+    # time.sleep(0.13)
+    # draw()
+
+    # for tempo in range(0, 17):
+    slender.set_curvatura_tentaculos_z(5, movimento_tentaculo_1[0][tempo])
+    slender.set_tentaculo_angulo_a(5, movimento_tentaculo_1[1][tempo])
+    slender.set_tentaculo_angulo_b(5, movimento_tentaculo_1[2][tempo])
+    # draw()
+
+    slender.set_curvatura_tentaculos_z(6, movimento_tentaculo_1[0][tempo])
+    slender.set_tentaculo_angulo_a(6, movimento_tentaculo_1[1][tempo])
+    slender.set_tentaculo_angulo_b(6, movimento_tentaculo_1[2][tempo])
+    # desenha()
+
+    slender.set_curvatura_tentaculos_z(7, movimento_tentaculo_1[0][tempo])
+    slender.set_tentaculo_angulo_a(7, movimento_tentaculo_1[1][tempo])
+    slender.set_tentaculo_angulo_b(7, movimento_tentaculo_1[2][tempo])
+    #desenha()

@@ -4,7 +4,7 @@ from Estrutura import *
 class Perna:
     def __init__(self, comprimento, largura):
         self.a = Estrutura(comprimento * 0.6, largura)
-        self.b = Estrutura(comprimento * 0.45, largura)
+        self.b = Estrutura(comprimento * 0.75, largura)
 
         self.a.set_conexao(self.b, 0.0)
 

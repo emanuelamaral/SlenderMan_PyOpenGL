@@ -1,7 +1,9 @@
-from movimentacao import *
+from constantes import *
 from SlenderMan import *
 from ambiente import *
 
+
+# seta os parametros de vizualição
 angx = 0
 angy = 0
 angz = 0
@@ -9,108 +11,173 @@ ang_a = 0
 ang_b = 0
 zoom = 80
 fAspect = 0
+z = z_1 = 0
 
-i = 0
-tempo = 0
+# na hora de parar uma movitação nao interferir nas outras
+i = h = j = k = l = 0
+
+# seta tempos diferentes para cada movimentação
+tempo_tentaculos = tempo_braco_fuck = tempo_braco_xoinha = 0
+tempo_andar_perna = tempo_tentaculos_2 = tempo_ataque = 0
+
 
 slender = Slender(1.0)
 
 
 def movimento_1_tentaculo(value):
-    global tempo
+    global tempo_tentaculos
 
-    slender.set_curvatura_tentaculos_z(0, movimento_tentaculo_1[0][tempo])
-    slender.set_tentaculo_angulo_a(0, movimento_tentaculo_1[1][tempo])
-    slender.set_tentaculo_angulo_b(0, movimento_tentaculo_1[2][tempo])
-    # time.sleep(0.13)
-    # draw()
+    slender.set_curvatura_tentaculos_z(0, mexer_tentaculos[0][tempo_tentaculos])
+    slender.set_tentaculo_angulo_a(0, mexer_tentaculos[1][tempo_tentaculos])
+    slender.set_tentaculo_angulo_b(0, mexer_tentaculos[2][tempo_tentaculos])
 
-    # for tempo in range(0, 17):
-    slender.set_curvatura_tentaculos_z(1, movimento_tentaculo_1[0][tempo])
-    slender.set_tentaculo_angulo_a(1, movimento_tentaculo_1[1][tempo])
-    slender.set_tentaculo_angulo_b(1, movimento_tentaculo_1[2][tempo])
-    # time.sleep(0.13)
-    # draw()
+    slender.set_curvatura_tentaculos_z(1, mexer_tentaculos[0][tempo_tentaculos])
+    slender.set_tentaculo_angulo_a(1, mexer_tentaculos[1][tempo_tentaculos])
+    slender.set_tentaculo_angulo_b(1, mexer_tentaculos[2][tempo_tentaculos])
 
-    # for tempo in range(0, 17):
-    slender.set_curvatura_tentaculos_z(2, movimento_tentaculo_1[0][tempo])
-    slender.set_tentaculo_angulo_a(2, movimento_tentaculo_1[1][tempo])
-    slender.set_tentaculo_angulo_b(2, movimento_tentaculo_1[2][tempo])
-    # time.sleep(0.13)
-    # draw()
+    slender.set_curvatura_tentaculos_z(2, mexer_tentaculos[0][tempo_tentaculos])
+    slender.set_tentaculo_angulo_a(2, mexer_tentaculos[1][tempo_tentaculos])
+    slender.set_tentaculo_angulo_b(2, mexer_tentaculos[2][tempo_tentaculos])
 
-    # for tempo in range(0, 17):
-    slender.set_curvatura_tentaculos_z(3, movimento_tentaculo_1[0][tempo])
-    slender.set_tentaculo_angulo_a(3, movimento_tentaculo_1[1][tempo])
-    slender.set_tentaculo_angulo_b(3, movimento_tentaculo_1[2][tempo])
-    # time.sleep(0.13)
-    # draw()
+    slender.set_curvatura_tentaculos_z(3, mexer_tentaculos[0][tempo_tentaculos])
+    slender.set_tentaculo_angulo_a(3, mexer_tentaculos[1][tempo_tentaculos])
+    slender.set_tentaculo_angulo_b(3, mexer_tentaculos[2][tempo_tentaculos])
 
-    # for tempo in range(0, 17):
-    slender.set_curvatura_tentaculos_z(4, movimento_tentaculo_1[0][tempo])
-    slender.set_tentaculo_angulo_a(4, movimento_tentaculo_1[1][tempo])
-    slender.set_tentaculo_angulo_b(4, movimento_tentaculo_1[2][tempo])
-    # time.sleep(0.13)
-    # draw()
+    slender.set_curvatura_tentaculos_z(4, mexer_tentaculos[0][tempo_tentaculos])
+    slender.set_tentaculo_angulo_a(4, mexer_tentaculos[1][tempo_tentaculos])
+    slender.set_tentaculo_angulo_b(4, mexer_tentaculos[2][tempo_tentaculos])
 
-    # for tempo in range(0, 17):
-    slender.set_curvatura_tentaculos_z(5, movimento_tentaculo_1[0][tempo])
-    slender.set_tentaculo_angulo_a(5, movimento_tentaculo_1[1][tempo])
-    slender.set_tentaculo_angulo_b(5, movimento_tentaculo_1[2][tempo])
-    # draw()
+    slender.set_curvatura_tentaculos_z(5, mexer_tentaculos[0][tempo_tentaculos])
+    slender.set_tentaculo_angulo_a(5, mexer_tentaculos[1][tempo_tentaculos])
+    slender.set_tentaculo_angulo_b(5, mexer_tentaculos[2][tempo_tentaculos])
 
-    slender.set_curvatura_tentaculos_z(6, movimento_tentaculo_1[0][tempo])
-    slender.set_tentaculo_angulo_a(6, movimento_tentaculo_1[1][tempo])
-    slender.set_tentaculo_angulo_b(6, movimento_tentaculo_1[2][tempo])
-    # desenha()
+    slender.set_curvatura_tentaculos_z(6, mexer_tentaculos[0][tempo_tentaculos])
+    slender.set_tentaculo_angulo_a(6, mexer_tentaculos[1][tempo_tentaculos])
+    slender.set_tentaculo_angulo_b(6, mexer_tentaculos[2][tempo_tentaculos])
 
-    slender.set_curvatura_tentaculos_z(7, movimento_tentaculo_1[0][tempo])
-    slender.set_tentaculo_angulo_a(7, movimento_tentaculo_1[1][tempo])
-    slender.set_tentaculo_angulo_b(7, movimento_tentaculo_1[2][tempo])
-    #desenha()
+    slender.set_curvatura_tentaculos_z(7, mexer_tentaculos[0][tempo_tentaculos])
+    slender.set_tentaculo_angulo_a(7, mexer_tentaculos[1][tempo_tentaculos])
+    slender.set_tentaculo_angulo_b(7, mexer_tentaculos[2][tempo_tentaculos])
 
-    time.sleep(0.050)
     desenha()
-    # glutPostRedisplay()
+
     if i == 1:
-        if tempo <= 15:
-            tempo += 1
+        if tempo_tentaculos <= 15:
+            tempo_tentaculos += 1
         else:
-            tempo = 0
-        glutTimerFunc(40, movimento_1_tentaculo, 1)
+            tempo_tentaculos = 0
+
+        glutTimerFunc(73, movimento_1_tentaculo, 1)
+
     else:
         pass
 
 
-def background():
-    glPushMatrix()
-    glEnable(GL_TEXTURE_2D)
-    glBindTexture(GL_TEXTURE_2D, textura_id)
-    glPushMatrix()
+def movimento_2_tentaculo(value):
+    global tempo_ataque
 
-    glRotatef(270, 1.0, 0.0, 0.0)
-    glTranslatef(0.0, 0.0, -350.0)
-    glScalef(1.0, 1.0, 1.0)
+    # pares de cima
+    slender.set_tentaculo_angulo_a(0, ataque_tentaculo_par_cima[0][tempo_ataque])
+    slender.set_tentaculo_angulo_a(4, ataque_tentaculo_par_cima[0][tempo_ataque])
 
-    # desenhar_chao()
-    glBegin(GL_QUADS)
-    x = 200
-    y = 200
-    z = 200
+    # pares do meio
+    slender.set_tentaculo_angulo_a(1, ataque_tentaculo_par_meio[0][tempo_ataque])
+    slender.set_tentaculo_angulo_a(2, ataque_tentaculo_par_meio[0][tempo_ataque])
+    slender.set_tentaculo_angulo_a(5, ataque_tentaculo_par_meio[0][tempo_ataque])
+    slender.set_tentaculo_angulo_a(6, ataque_tentaculo_par_meio[0][tempo_ataque])
 
-    glVertex3f(-x, -y, z)
-    glTexCoord2f(0.0, 0.0)
-    glVertex3f(x, -y, z)
-    glTexCoord2f(1.0, 0.0)
-    glVertex3f(x, y, z)
-    glTexCoord2f(1.0, 1.0)
-    glVertex3f(-x, y, z)
-    glTexCoord2f(0.0, 1.0)
-    glEnd()
-    glPopMatrix()
-    glDisable(GL_TEXTURE_2D)
-    glPopMatrix()
+    # pares de baixo
+    slender.set_tentaculo_angulo_a(3, ataque_tentaculo_par_baixo[0][tempo_ataque])
+    slender.set_tentaculo_angulo_a(7, ataque_tentaculo_par_baixo[0][tempo_ataque])
 
+    desenha()
+
+    if j == 1:
+        if tempo_ataque <= 41:
+            tempo_ataque += 1
+        else:
+            tempo_ataque = 0
+
+        glutTimerFunc(15, movimento_2_tentaculo, 1)
+
+    else:
+        pass
+
+
+def movimento_3_tentaculo(value):
+    global tempo_tentaculos_2
+
+    # par de cima
+    slender.set_curvatura_tentaculos(0, mexer_tentaculos_par_cima[0][tempo_tentaculos_2])
+    slender.set_curvatura_tentaculos(4, mexer_tentaculos_par_cima[0][tempo_tentaculos_2])
+
+    # pares do meio
+    slender.set_tentaculo_angulo_a(1, mexer_tentaculos_par_meio[1][tempo_tentaculos_2])
+    slender.set_tentaculo_angulo_a(2, mexer_tentaculos_par_meio[0][tempo_tentaculos_2])
+    slender.set_tentaculo_angulo_a(5, mexer_tentaculos_par_meio[1][tempo_tentaculos_2])
+    slender.set_tentaculo_angulo_a(6, mexer_tentaculos_par_meio[0][tempo_tentaculos_2])
+
+    # par de baixo
+    slender.set_tentaculo_angulo_a(3, mexer_tentaculos_par_baixo[0][tempo_tentaculos_2])
+    slender.set_tentaculo_angulo_a(7, mexer_tentaculos_par_baixo[0][tempo_tentaculos_2])
+
+    desenha()
+    if k == 1:
+        if tempo_tentaculos_2 <= 63:
+            tempo_tentaculos_2 += 1
+        else:
+            tempo_tentaculos_2 = 0
+
+        glutTimerFunc(40, movimento_3_tentaculo, 1)
+
+    else:
+        pass
+
+
+def fuck_braco_levantado(value):
+    global tempo_braco_fuck
+
+    slender.set_curvatura_bracos_2(0, gira_e_levanta_braco_direito_eixo_x_90[0][tempo_braco_fuck])
+    slender.set_braco_angulo_b(0, gira_mao[0][tempo_braco_fuck])
+
+    desenha()
+
+    if l == 1:
+        if tempo_braco_fuck <= 21:
+            tempo_braco_fuck += 1
+            if tempo_braco_fuck == 12:
+                time.sleep(1.5)
+            if tempo_braco_fuck == 22:
+                home_mao()
+
+        glutTimerFunc(40, fuck_braco_levantado, 1)
+    else:
+        pass
+
+
+def andar_pernas(value):
+    global tempo_andar_perna
+
+    slender.set_curvatura_pernas_2(0, andar_perna_direita[0][tempo_andar_perna])
+    slender.set_curvatura_bracos_2(0, andar_braco_direito[0][tempo_andar_perna])
+    slender.set_braco_angulo_a(0, andar_braco_direito[1][tempo_andar_perna])
+    slender.set_perna_angulo_a(0, andar_perna_direita[1][tempo_andar_perna])
+
+    slender.set_curvatura_pernas_2(1, andar_perna_esquerda[0][tempo_andar_perna])
+    slender.set_curvatura_bracos_2(1, andar_braco_esquerdo[0][tempo_andar_perna])
+    slender.set_perna_angulo_a(1, andar_perna_esquerda[1][tempo_andar_perna])
+    slender.set_braco_angulo_a(1, andar_braco_esquerdo[1][tempo_andar_perna])
+
+    desenha()
+
+    if h == 1:
+        if tempo_andar_perna <= 41:
+            tempo_andar_perna += 1
+        else:
+            tempo_andar_perna = 0
+        glutTimerFunc(40, andar_pernas, 1)
+    else:
+        pass
 
 def init():
     glutReshapeWindow(1080, 720)
@@ -132,7 +199,6 @@ def configura_iluminacao():
     glEnable(GL_LIGHT0)
     glEnable(GL_COLOR_MATERIAL)
     glColor3f(1.0, 1.0, 1.0)
-    #glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, diffuse_light)
     glMateriali(GL_FRONT_AND_BACK, GL_SHININESS, 50)
 
 
@@ -154,12 +220,8 @@ def desenha():
 
     configura_iluminacao()
     configura_slender()
-
-    #glPushMatrix()
-    #background()
-    #desenhar_chao()
     desenhar_fundo()
-    #glPopMatrix()
+    desenhar_chao()
 
     glutSwapBuffers()
 
@@ -174,7 +236,7 @@ def configurar_janela(w, h):
     glMatrixMode(GL_MODELVIEW)
     glLoadIdentity()
     #glTranslatef(0.0, -10.0, -25.0)
-    glTranslatef(0.0, -10.0, 55.0)
+    glTranslatef(0.0, -10.0, 40.0)
 
 
 def EspecificaParametrosVisualizacao():
@@ -208,7 +270,7 @@ def gerencia_mouse(button, state, x, y):
 
 
 def eventos_teclado(tecla, x, y):
-    global angy, angx, angz, ang_a, ang_b, tempo, i
+    global angy, angx, angz, ang_a, ang_b, i, h, j, k, l, g, tempo_braco_fuck, tempo_braco_xoinha
 
     if tecla == b'.':
         angy += 5
@@ -240,21 +302,57 @@ def eventos_teclado(tecla, x, y):
         if angz < 0:
             angz += 360
 
-    elif tecla == b's':
+    elif tecla == b'q':
         i = 1
-        glutTimerFunc(40, movimento_1_tentaculo, 1)
+        glutTimerFunc(75, movimento_1_tentaculo, 1)
 
-    elif tecla == b'S':
+    elif tecla == b'Q':
         i = 0
-        glutTimerFunc(40, movimento_1_tentaculo, 0)
+        glutTimerFunc(0, movimento_1_tentaculo, 0)
 
-    elif tecla == b'i':
+    elif tecla == b'w':
+        j = 1
+        glutTimerFunc(15, movimento_2_tentaculo, 1)
+
+    elif tecla == b'W':
+        j = 0
+        glutTimerFunc(0, movimento_2_tentaculo, 0)
+
+    elif tecla == b'e':
+        k = 1
+        glutTimerFunc(40, movimento_3_tentaculo, 1)
+
+    elif tecla == b'E':
+        k = 0
+        glutTimerFunc(40, movimento_3_tentaculo, 0)
+
+    elif tecla == b'a':
+        l = 1
+        glutTimerFunc(40, fuck_braco_levantado, 1)
         fuck()
 
-    elif tecla == b'o':
-        tchau()
+    elif tecla == b'A':
+        l = 0
+        tempo_braco_fuck = 0
+        glutTimerFunc(0, fuck_braco_levantado, 0)
+        home_mao()
 
-    elif tecla == b'h':
+    elif tecla == b's':
+        h = 1
+        glutTimerFunc(40, andar_pernas, 1)
+
+    elif tecla == b'S':
+        h = 0
+        glutTimerFunc(40, andar_pernas, 0)
+
+    elif tecla == b'd':
+        h = 1
+        fechar_mao(True)
+        glutTimerFunc(40, andar_pernas, 1)
+
+    elif tecla == b'D':
+        h = 0
+        glutTimerFunc(0, andar_pernas, 0)
         home_mao()
 
     elif tecla == b'z':
@@ -264,6 +362,32 @@ def eventos_teclado(tecla, x, y):
         glutFullScreen()
 
     glutPostRedisplay()
+
+
+def teclas_especiais(tecla, x, y):
+    global z, z_1, angy
+
+    if tecla == GLUT_KEY_UP:
+        z -= 0.03
+        glTranslatef(0.0, 0.0, z)
+        glutPostRedisplay()
+
+    elif tecla == GLUT_KEY_DOWN:
+        z_1 += 0.03
+        glTranslatef(0.0, 0.0, z_1)
+        glutPostRedisplay()
+
+    elif tecla == GLUT_KEY_LEFT:
+        angy -= 5
+        if angy < 0:
+            angy += 360
+        glutPostRedisplay()
+
+    elif tecla == GLUT_KEY_RIGHT:
+        angy += 5
+        if angy > 360:
+            angy -= 360
+        glutPostRedisplay()
 
 
 def movimento_mouse(x, y):
@@ -279,6 +403,7 @@ def main():
     glutPassiveMotionFunc(movimento_mouse)
     glutReshapeFunc(configurar_janela)
     glutMouseFunc(gerencia_mouse)
+    glutSpecialFunc(teclas_especiais)
     init()
     glutMainLoop()
 

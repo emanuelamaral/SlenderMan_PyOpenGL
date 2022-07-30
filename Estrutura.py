@@ -1,4 +1,3 @@
-from OpenGL.GLU import *
 from mao_testes.main import *
 
 i = 0
@@ -31,22 +30,21 @@ class Estrutura:
             glPushMatrix()
             glColor3f(0.0, 0.0, 0.0)
             glRotatef(90, 1.0, 0.0, 0.0)
-            glScalef(0.47, 0.4, 2.0)
-            glTranslatef(0.0, 0.0, -7.5)
-            gluCylinder(gluNewQuadric(), 2.0, 2.0, 10, 20, 20)
+            glScalef(0.47, 0.4, 0.50)
+            glTranslatef(0.0, 0.0, -8.0)
+            gluCylinder(gluNewQuadric(), 2.0, 2.0, 21, 20, 20)
+            glutSolidSphere(2.2, 8, 8)
             glPopMatrix()
 
-        elif tipo == "braco":
+        elif tipo == "braco" and self.conexao is not None:
 
             glPushMatrix()
             glColor3f(0.0, 0.0, 0.0)
             glRotatef(90, 1.0, 0.0, 0.0)
-            glScalef(0.3, 0.3, 0.32)
-            #glScalef(self.largura, self.altura, self.largura)
-            #glPushMatrix()
-            glTranslatef(0.0, 0.0, -7.5)
+            glScalef(0.3, 0.3, 0.47)
+            glTranslatef(0.0, 0.0, -9.0)
             gluCylinder(gluNewQuadric(), 2.0, 2.0, 18, 20, 20)
-            #glPopMatrix()
+            glutSolidSphere(0.45 * self.largura, 8, 8)
             glPopMatrix()
 
         else:
@@ -60,7 +58,7 @@ class Estrutura:
 
         glTranslatef(0.0, self.altura/2.0, 0.0)
 
-        #glutSolidSphere(0.85 * self.largura, 8, 8)
+        #glutSolidSphere(0.45 * self.largura, 8, 8)
 
         if isinstance(self.conexao, Estrutura):
             glRotatef(self.angulo, 1.0, 0.0, 0.0)
@@ -78,13 +76,14 @@ class Estrutura:
         elif self.conexao is None and tipo == "braco":
             glPushMatrix()
             glColor3f(1.0, 1.0, 1.0)
-            glTranslatef(0.0, 0.8, 0.0)
+            glTranslatef(0.0, 0.35, 0.0)
             glRotatef(180, 0.0, 1.0, .0)
             glScalef(0.20, 0.20, 0.20)
-            mao_direita = Mao(1.0)
-            mao_direita.desenha_mao()
-
-
+            mao = Mao(1.0)
+            mao.desenha_mao()
             glPopMatrix()
 
         glPopMatrix()
+
+
+

@@ -1,47 +1,8 @@
 from OpenGL.GL import *
 import pygame
 
-textura_id = []
+textura_fundo = textura_chao = 0
 texture = []
-
-width = 0
-height = 0
-
-
-for i in range(0, 3):
-    textura_id.append(i)
-
-
-def carregar_texturas_chao():
-    global texture, width, height
-
-    textura = pygame.image.load("C:\\Users\\amoz_\\PycharmProjects\\OpenGL\\SlenderMan\\images\\background_slender.jpg")
-    texture.append(pygame.image.tostring(textura, "RGBA", True))
-    width = textura.get_width()
-    height = textura.get_height()
-
-    glGenTextures(1, textura_id[0])
-    glBindTexture(GL_TEXTURE_2D, textura_id[0])
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height,
-                 0, GL_RGBA, GL_UNSIGNED_BYTE, texture[0])
-
-    configurar_ambiente()
-
-
-def carregar_textura_fundo():
-    global texture, width, height
-
-    textura = pygame.image.load("C:\\Users\\amoz_\\PycharmProjects\\OpenGL\\SlenderMan\\images\\background_slender2.jpg")
-    texture.append(pygame.image.tostring(textura, "RGBA", True))
-    width = textura.get_width()
-    height = textura.get_height()
-
-    glGenTextures(1, textura_id[0])
-    glBindTexture(GL_TEXTURE_2D, textura_id[0])
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height,
-                 0, GL_RGBA, GL_UNSIGNED_BYTE, texture[0])
-
-    configurar_ambiente()
 
 
 def configurar_ambiente():
@@ -58,18 +19,49 @@ def configurar_ambiente():
     glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST)
 
 
+def carregar_textura_fundo():
+    global texture
+
+    textura = pygame.image.load("C:\\Users\\amoz_\\PycharmProjects\\OpenGL\\SlenderMan\\images\\background_slender2_2.jpg")
+    texture.append(pygame.image.tostring(textura, "RGBA", True))
+    width = textura.get_width()
+    height = textura.get_height()
+
+    glGenTextures(1, textura_fundo)
+    glBindTexture(GL_TEXTURE_2D, textura_fundo)
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height,
+                 0, GL_RGBA, GL_UNSIGNED_BYTE, texture[0])
+
+    configurar_ambiente()
+
+
+def carregar_texturas_chao():
+    global texture
+
+    textura = pygame.image.load("C:\\Users\\amoz_\\PycharmProjects\\OpenGL\\SlenderMan\\images\\gramado3_slender_2.jpg")
+    texture.append(pygame.image.tostring(textura, "RGBA", True))
+    width = textura.get_width()
+    height = textura.get_height()
+
+    glGenTextures(1, textura_chao)
+    glBindTexture(GL_TEXTURE_2D, textura_chao)
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height,
+                 0, GL_RGBA, GL_UNSIGNED_BYTE, texture[1])
+
+    configurar_ambiente()
+
+
 def desenhar_chao():
     glPushMatrix()
     carregar_texturas_chao()
     glEnable(GL_TEXTURE_2D)
-    glBindTexture(GL_TEXTURE_2D, textura_id[0])
+    glBindTexture(GL_TEXTURE_2D, textura_chao)
     glPushMatrix()
 
     glRotatef(270, 1.0, 0.0, 0.0)
     glTranslatef(0.0, 0.0, -350.0)
     glScalef(3.0, 3.0, 1.0)
 
-    # desenhar_chao()
     glBegin(GL_QUADS)
     x = 200
     y = 200
@@ -93,14 +85,13 @@ def desenhar_fundo():
     glPushMatrix()
     carregar_textura_fundo()
     glEnable(GL_TEXTURE_2D)
-    glBindTexture(GL_TEXTURE_2D, textura_id[0])
+    glBindTexture(GL_TEXTURE_2D, textura_fundo)
     glPushMatrix()
 
     glRotatef(270, 0.0, 0.0, 1.0)
     glTranslatef(0.0, 0.0, -1200.0)
     glScalef(5.0, 5.0, 1.0)
 
-    # desenhar_chao()
     glBegin(GL_QUADS)
     x = 200
     y = 200
